@@ -1,11 +1,9 @@
+# Makefile
 up:
-	docker compose -f infra/docker-compose.yml up -d
+	ansible-playbook ansible/playbooks/deploy-infra.yml
 
 down:
-	docker compose -f infra/docker-compose.yml down
+	docker compose -f infra/docker-compose.yml down -v
 
 test:
 	pytest tests/
-
-lint:
-	docker compose -f infra/docker-compose.yml config
